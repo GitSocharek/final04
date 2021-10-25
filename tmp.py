@@ -17,8 +17,8 @@ if len(files) == 1:
 
 filepaths = files[1: ]
 
-print(f"{LINES:6} {WORDS:6} {CHARS:6} {FILENAME}")
-
+print(f"{LINES:6} {WORDS:6} {CHARS:7}|  {FILENAME}")
+print('-' * 32)
 # print(filepaths)
 for file in filepaths:
     with open(file, encoding = 'utf-8') as stream:
@@ -27,11 +27,4 @@ for file in filepaths:
     lines = len(content.split('\n'))
     words = len(content.split())
     char = len(content) - content.count('\n')
-    print(f"{lines:5} {words:6} {char:6} {file:^18}")
-print() 
-
-
-# left_alignment = "Left Text"
-# center_alignment = "Centered Text"
-# right_alignment = "Right Tex"
-# print(f"{left_alignment : <20}{center_alignment : ^15}{right_alignment : >20}")
+    print(f"{lines:5} {words:6} {char:6}  |  {file}")
