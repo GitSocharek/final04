@@ -78,30 +78,59 @@
 
 # Rozwiń program z poprzedniej lekcji tak, aby wyniki wyświetlić w tabeli. Użyj string interpolation. Dodaj nagłówek tabeli.
 
-import sys
+# import sys
 
-files = sys.argv
-LINES = 'LINES'
-WORDS = 'WORDS'
-CHARS = 'CHARS'
-FILENAME = 'FILENAME'
+# files = sys.argv
+# LINES = 'LINES'
+# WORDS = 'WORDS'
+# CHARS = 'CHARS'
+# FILENAME = 'FILENAME'
 
-if len(files) == 1:
-    print('Missing filename(s).')
-    sys.exit(1)
+# if len(files) == 1:
+#     print('Missing filename(s).')
+#     sys.exit(1)
 
-filepaths = files[1: ]
+# filepaths = files[1: ]
 
-print(f"{LINES:6} {WORDS:6} {CHARS:6} {FILENAME}")
+# print(f"{LINES:6} {WORDS:6} {CHARS:6} {FILENAME}")
 
-for file in filepaths:
-    with open(file, encoding = 'utf-8') as stream:
-        content = stream.read()
+# for file in filepaths:
+#     with open(file, encoding = 'utf-8') as stream:
+#         content = stream.read()
 
-    lines = len(content.split('\n'))
-    words = len(content.split())
-    char = len(content) - content.count('\n')
-    print(f"{lines:5} {words:6} {char:6}  {file}")
+#     lines = len(content.split('\n'))
+#     words = len(content.split())
+#     char = len(content) - content.count('\n')
+#     print(f"{lines:5} {words:6} {char:6}  {file}")
 
 ### 🔴 Ćwiczenie M04L06
 
+# Narodowy Bank Polski udostępnia przez swoje API historyczne kursy walut. Otrzymałæś odpowiedź taką jak poniżej
+
+# response = {
+#     "table": "A",
+#     "currency": "dolar amerykański",
+#     "code": "USD",
+#     "rates": [
+#         {
+#             "no": "148/A/NBP/2021",
+#             "effectiveDate": "2021-08-03",
+#             "mid": 3.8315,
+#         },
+#     ],
+# }
+
+# rate = response['rates']
+# mid_currency = rate[0]
+# mid = mid_currency['mid']
+
+# print(mid)
+
+# Jest to kurs waluty USD z dnia 3 sierpnia 2021. Z tak zagnieżdżonej struktury wyciągnij kurs waluty (klucz "mid").
+
+### 🔴 Ćwiczenie M04L07
+
+# 1. Mając podany tekst zlicz poszczególne słowa.
+# 2. Wyświetl w tabeli ile razy występuje każde ze słów.
+# 3. Nie zwracaj uwagi na wielkość liter w słowach, to znaczy "A" oraz "a" to jest to samo słowo. 
+# 4. W jaki jeszcze sposób przetworzył(a)byś tekst zanim podzielisz go na słowa?

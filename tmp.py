@@ -1,28 +1,23 @@
-### 🔴 Ćwiczenie M04L05
+### 🔴 Ćwiczenie M04L06
 
-# Rozwiń program z poprzedniej lekcji tak, aby wyniki wyświetlić w tabeli. Użyj string interpolation. Dodaj nagłówek tabeli.
+# Narodowy Bank Polski udostępnia przez swoje API historyczne kursy walut. Otrzymałæś odpowiedź taką jak poniżej
 
-import sys
+response = {
+    "table": "A",
+    "currency": "dolar amerykański",
+    "code": "USD",
+    "rates": [
+        {
+            "no": "148/A/NBP/2021",
+            "effectiveDate": "2021-08-03",
+            "mid": 3.8315,
+        },
+    ],
+}
 
-files = sys.argv
-LINES = 'LINES'
-WORDS = 'WORDS'
-CHARS = 'CHARS'
-FILENAME = 'FILENAME'
+rate = response['rates']
+mid_currency = rate[0]
+mid = mid_currency['mid']
 
-if len(files) == 1:
-    print('Missing filename(s).')
-    sys.exit(1)
+print(mid)
 
-filepaths = files[1: ]
-
-print(f"{LINES:6} {WORDS:6} {CHARS:6} {FILENAME}")
-
-for file in filepaths:
-    with open(file, encoding = 'utf-8') as stream:
-        content = stream.read()
-
-    lines = len(content.split('\n'))
-    words = len(content.split())
-    char = len(content) - content.count('\n')
-    print(f"{lines:5} {words:6} {char:6}  {file}")
