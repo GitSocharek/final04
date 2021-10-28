@@ -137,10 +137,10 @@
 
 PUNCTUATIONS = '.,?!'
 
-txt = 'Słowa. Jak policzyć słowa w słowniku. No jak, jak?'
+txt = 'Słowa. Jak policzyć słowa w słowniku. Jak, jak?'
 words = txt.split()
 
-print(words)
+# print(words)
 split_words = []
 for word in words:
     for punc in PUNCTUATIONS:
@@ -155,5 +155,5 @@ for i in split_words:
     else:
         stats[i] = 1
 
-for i in sorted(stats, key=stats.get):
-    print("%d×'%s'" % (stats[i], i))
+for i in stats:
+    print(stats.get(i, 0), i)
