@@ -6,27 +6,24 @@
 # 4. W jaki jeszcze sposób przetworzył(a)byś tekst zanim podzielisz go na słowa?
 
 import sys
-
 text = sys.argv
-PUNCTUATIONS = '.,?!'
 
-print(text) # tmp
+PUNCTUATIONS = '.,?!'
+# print(text) # tmp
 
 for txt in text[1: ]:
     for punc in PUNCTUATIONS:
         txt = txt.replace(punc, '').lower()
-    split_text = txt.split()
-print(split_text) # tmp
-  
+    words = txt.split()
+# print(words) # tmp
+
 dict = {}
-for word in split_text:
+for word in words:
     if word in dict:
         dict[word] += 1
     else:
         dict[word] = 1
+# print(dict) # tmp
 
-print(dict) # tmp
-
-for key in dict:
-    # print(f"{dict.get(i, 0), i:3}")
-    print(f"{dict.get(key, 0):3}", key)
+for key_ in dict:
+    print(f"{dict.get(key_, 0):3}", key_)
