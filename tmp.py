@@ -1,42 +1,34 @@
-### 🔴 Ćwiczenie M04L07
+### 🔴 Ćwiczenie M03L19
+import glob
 
-# 1. Mając podany tekst zlicz poszczególne słowa.
-# 2. Wyświetl w tabeli ile razy występuje każde ze słów.
-# 3. Nie zwracaj uwagi na wielkość liter w słowach, to znaczy "A" oraz "a" to jest to samo słowo. 
-# 4. W jaki jeszcze sposób przetworzył(a)byś tekst zanim podzielisz go na słowa?
+POS_FILES = [r'D:\Dokumenty\Python\M03\data\aclImdb\train\pos\61_10.txt']#, r'D:\Dokumenty\Python\M03\data\aclImdb\train\pos\31_8.txt']
+PUNCTUATIONS = "'.,?!\'"
 
-import sys
+# print(split_lines)
+pos_reviews = []
+for file in POS_FILES:
+    with open(file, encoding = 'utf-8') as stream:
+        content = stream.read()
+        for punc in PUNCTUATIONS:
+            word = content.replace(punc, '').replace('<br />','')
+            word = word.lower().split()
+        pos_reviews.append(word)
 
-txt = sys.argv
-PUNCTUATIONS = '.,?!'
+print(pos_reviews)
 
-print(txt)
-# words = txt.split()
-for word in txt[1: ]:
-    split_txt = word.split()
-print(split_txt)
+# input_txt = input('Jakich słów szukasz? ')
+# split_txt = input_txt.lower().split()
 
-# print(words)
-split_words = []
-for word in split_txt:
-    for punc in PUNCTUATIONS:
-        word = word.replace(punc, '').lower()
-    split_words.append(word)
+# comments_with_input_words = []
+# for word in split_txt:
+#     for list_ in comments_from_file:
+#         if word in list_ and list_ not in comments_with_input_words:
+#             comments_with_input_words.append(list_)
 
-# print(split_words)  
-stats = {}
-for i in split_words:
-    if i in stats:
-        stats[i] += 1
-    else:
-        stats[i] = 1
+# number_of_comments_with_input_words = len(comments_with_input_words)
+# number_of_comments = len(comments_from_file)
 
-# print(stats)
-
-for i in stats:
-    # print(f"{stats.get(i, 0), i:3}")
-    print(stats.get(i, 0), i)
-
-
-# print(f"{lines:5} {words:6} {char:6}  {file}")
+# print(
+#     f'W {number_of_comments_with_input_words} na {number_of_comments} komentarze występuje jedno ze słów: ' + input_txt.replace(' ',',')
+# )
 
