@@ -1,29 +1,39 @@
-### 🔴 Ćwiczenie M04L07
+### 🔴 Ćwiczenie M03L19
 
-# 1. Mając podany tekst zlicz poszczególne słowa.
-# 2. Wyświetl w tabeli ile razy występuje każde ze słów.
-# 3. Nie zwracaj uwagi na wielkość liter w słowach, to znaczy "A" oraz "a" to jest to samo słowo. 
-# 4. W jaki jeszcze sposób przetworzył(a)byś tekst zanim podzielisz go na słowa?
+import glob
 
-import sys
-text = sys.argv
+PUNCTUATIONS = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
 
-PUNCTUATIONS = '.,?!'
-# print(text) # tmp
+POS_FILES = [r'M03\data\aclImdb\train\pos\3_10.txt', r'M03\data\aclImdb\train\pos\31_8.txt']
+pos_reviews = []
+for file in POS_FILES:
+    with open(file, encoding = 'utf-8') as stream:
+        content = stream.read()
+        # print(content)
+        content = content.replace('<br />',' ')
+        for char in file:
+            if char in PUNCTUATIONS:
+                word = content.replace(char, '')
+                word = word.lower().split()
+        pos_reviews.append(word)
+print(pos_reviews)
 
-for txt in text[1: ]:
-    for punc in PUNCTUATIONS:
-        txt = txt.replace(punc, '').lower()
-    words = txt.split()
-# print(words) # tmp
+NEG_FILES = [r'M03\data\aclImdb\train\neg\1_1.txt', r'M03\data\aclImdb\train\neg\4_4.txt']
+neg_reviews = []
+for file in NEG_FILES:
+    with open(file, encoding = 'utf-8') as stream:
+        content = stream.read()
+        # print(content)
+        content = content.replace('<br />',' ')
+        for char in file:
+            if char in PUNCTUATIONS:
+                word = content.replace(char, '')
+                word = word.lower().split()
+        neg_reviews.append(word)
+print(neg_reviews)
 
-dict = {}
-for word in words:
-    if word in dict:
-        dict[word] += 1
-    else:
-        dict[word] = 1
-# print(dict) # tmp
-
-for key_ in dict:
-    print(f"{dict.get(key_, 0):3}", key_)
+split_comment = []
+input_comment = input('Enter comment: ')
+comment = input_comment.lower().replace(PUNCTUATIONS, '').split()
+split_comment.append(comment)
+print(split_comment)
